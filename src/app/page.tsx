@@ -2,9 +2,13 @@
 
 import { useState, useEffect } from 'react'
 import styles from './page.module.css'
+import Image from 'next/image'
 
 export default function Home() {
-  const [posts, setPosts] = useState([])
+  const [posts, setPosts]: [
+    Array<{ media_attachments: Array<{ url: string; id: string }> }>,
+    Function,
+  ] = useState([])
 
   useEffect(() => {
     ;(async () => {
@@ -19,9 +23,12 @@ export default function Home() {
     <>
       {posts.flatMap(post =>
         post.media_attachments.map(attachment => (
-          <img
+          <Image
             src={attachment.url}
-            style={{ width: 200, height: 200, objectFit: 'cover' }}
+            style={{ objectFit: 'cover' }}
+            width={200}
+            height={200}
+            alt="not set yet"
             key={attachment.id}
           />
         )),
