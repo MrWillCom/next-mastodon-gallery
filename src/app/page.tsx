@@ -22,6 +22,7 @@ export default function Home() {
           <img
             src={attachment.url}
             style={{ width: 200, height: 200, objectFit: 'cover' }}
+            key={attachment.id}
           />
         )),
       )}
