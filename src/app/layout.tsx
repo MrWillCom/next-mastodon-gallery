@@ -1,3 +1,4 @@
+import 'modern-normalize/modern-normalize.css'
 import './globals.css'
 
 export const metadata = {
