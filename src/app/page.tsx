@@ -6,7 +6,14 @@ import styles from './page.module.scss'
 export default function Home() {
   const [posts, setPosts]: [
     Array<{
-      media_attachments: Array<{ url: string; description: string; id: string }>
+      id: string
+      created_at: string
+      content: string
+      media_attachments: Array<{
+        id: string
+        url: string
+        description: string
+      }>
     }>,
     Function,
   ] = useState([])
@@ -22,17 +29,25 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
-      {posts.flatMap(post =>
-        post.media_attachments.map(attachment => (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={attachment.url}
-            className={styles.image}
-            alt={attachment['description']}
-            key={attachment.id}
-          />
-        )),
-      )}
+      {posts.map(post => (
+        <div className={styles.post} key={post.id}>
+          <div className={styles.header}>
+            <h1>{post.created_at}</h1>
+            <div dangerouslySetInnerHTML={{ __html: post.content }}></div>
+          </div>
+          <div className={styles.attachments}>
+            {post.media_attachments.map(attachment => (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={attachment.url}
+                className={styles.image}
+                alt={attachment['description']}
+                key={attachment.id}
+              />
+            ))}
+          </div>
+        </div>
+      ))}
     </main>
   )
 }

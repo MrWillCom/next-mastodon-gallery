@@ -1,5 +1,8 @@
-.main {
-  margin: 12px;
+.post {
+  margin: 24px 12px;
+}
+
+.attachments {
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
   grid-template-rows: 1fr;
