@@ -1,12 +1,13 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import styles from './page.module.css'
-import Image from 'next/image'
+import styles from './page.module.scss'
 
 export default function Home() {
   const [posts, setPosts]: [
-    Array<{ media_attachments: Array<{ url: string; id: string }> }>,
+    Array<{
+      media_attachments: Array<{ url: string; description: string; id: string }>
+    }>,
     Function,
   ] = useState([])
 
@@ -20,19 +21,18 @@ export default function Home() {
   }, [])
 
   return (
-    <>
+    <main className={styles.main}>
       {posts.flatMap(post =>
         post.media_attachments.map(attachment => (
-          <Image
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
             src={attachment.url}
-            style={{ objectFit: 'cover' }}
-            width={200}
-            height={200}
-            alt="not set yet"
+            className={styles.image}
+            alt={attachment['description']}
             key={attachment.id}
           />
         )),
       )}
-    </>
+    </main>
   )
 }
