@@ -2,6 +2,11 @@
 
 import { useState, useEffect } from 'react'
 import styles from './page.module.scss'
+import moment from 'moment'
+
+import { Inter } from 'next/font/google'
+
+const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   const [posts, setPosts]: [
@@ -28,12 +33,12 @@ export default function Home() {
   }, [])
 
   return (
-    <main className={styles.main}>
+    <main className={styles.main + ' ' + inter.className}>
       {posts.map(post => (
         <div className={styles.post} key={post.id}>
           <div className={styles.header}>
-            <h1>{post.created_at}</h1>
-            <div dangerouslySetInnerHTML={{ __html: post.content }}></div>
+            <h1 className={styles.date}>{moment(post.created_at).format('ll')}</h1>
+            <div className={styles.description} dangerouslySetInnerHTML={{ __html: post.content }}></div>
           </div>
           <div className={styles.attachments}>
             {post.media_attachments.map(attachment => (

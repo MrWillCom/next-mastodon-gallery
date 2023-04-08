@@ -2,6 +2,21 @@
   margin: 24px 12px;
 }
 
+.header {
+  margin-bottom: 12px;
+}
+
+.date {
+  margin: 0;
+  margin-bottom: 4px;
+}
+
+.description {
+  p {
+    margin: 0;
+  }
+}
+
 .attachments {
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
