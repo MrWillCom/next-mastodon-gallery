@@ -54,10 +54,17 @@
 
 .blurhash {
   position: absolute !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: -1;
-  aspect-ratio: 1;
   border-radius: 6px;
   overflow: hidden;
+
+  @media (min-width: 600px) {
+    aspect-ratio: 1;
+  }
 }
 
 .image {
