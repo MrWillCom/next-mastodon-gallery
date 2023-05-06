@@ -50,6 +50,12 @@ export default function Home() {
             <div className={styles.attachment} key={attachment.id}>
               <Blurhash
                 hash={attachment.blurhash}
+                className={styles.blurhashBehind}
+                width="100%"
+                height="auto"
+              />
+              <Blurhash
+                hash={attachment.blurhash}
                 className={styles.blurhash}
                 width="100%"
                 height="auto"

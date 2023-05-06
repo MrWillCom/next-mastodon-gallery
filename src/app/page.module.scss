@@ -5,13 +5,13 @@
 .title {
   font-size: 48px;
   margin: 0;
-  margin-top: 40px;
+  margin-top: 100px;
 }
 
 .subtitle {
   margin: 0;
   margin-top: 6px;
-  margin-bottom: 36px;
+  margin-bottom: 90px;
   opacity: 0.6;
 }
 
@@ -32,7 +32,8 @@
   position: relative;
 }
 
-.blurhash {
+.blurhash,
+.blurhashBehind {
   position: absolute !important;
   top: 0;
   left: 0;
@@ -41,6 +42,10 @@
   z-index: -1;
   overflow: hidden;
   aspect-ratio: 1;
+}
+
+.blurhashBehind {
+  filter: blur(50px) saturate(1.2);
 }
 
 .image {
