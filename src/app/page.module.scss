@@ -5,13 +5,13 @@
 .title {
   font-size: 48px;
   margin: 0;
-  margin-top: 100px;
+  margin-top: calc(20vh + 25px);
 }
 
 .subtitle {
   margin: 0;
   margin-top: 6px;
-  margin-bottom: 90px;
+  margin-bottom: 20vh;
   opacity: 0.6;
 }
 
