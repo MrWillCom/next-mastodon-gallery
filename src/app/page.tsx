@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import styles from './page.module.scss'
 import { Blurhash } from 'react-blurhash'
+import Image from 'next/image'
 
 import { Noto_Serif } from 'next/font/google'
 
@@ -53,9 +54,10 @@ export default function Home() {
                 width="100%"
                 height="auto"
               />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src={attachment.url}
+                width={200}
+                height={1080}
                 className={styles.image}
                 alt={attachment['description']}
               />
