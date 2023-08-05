@@ -72,12 +72,12 @@ export default function Home() {
         )}
       </main>
       <footer className={styles.footer}>
-        <a href="https://creativecommons.org/licenses/by-nc/4.0">
+        <a href="https://creativecommons.org/licenses/by-nc/4.0" target='_blank'>
           CC BY-NC 4.0
         </a>{' '}
         © 2023 Mr. Will. · <a href="https://mrwillcom.com/">Home</a> ·{' '}
-        <a href="https://blog.mrwillcom.com/">Blog</a> ·{' '}
-        <a href="https://noc.social/@MrWillCom">Mastodon</a>
+        <a href="https://blog.mrwillcom.com/" target='_blank'>Blog</a> ·{' '}
+        <a href="https://noc.social/@MrWillCom" target='_blank'>Mastodon</a>
       </footer>
     </div>
   )
