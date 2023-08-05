@@ -1,0 +1,23 @@
+:root {
+  color-scheme: light dark;
+
+  --link-color: #555;
+  --link-color-hover: #000;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --link-color: #bbb;
+    --link-color-hover: #fff;
+  }
+}
+
+a {
+  color: var(--link-color);
+  transition: color 0.15s;
+
+  &:hover,
+  &:focus-visible {
+    color: var(--link-color-hover);
+  }
+}

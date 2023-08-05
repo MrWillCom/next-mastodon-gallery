@@ -1,5 +1,5 @@
 import 'modern-normalize/modern-normalize.css'
-import './globals.css'
+import './globals.scss'
 
 export const metadata = {
   title: 'Gallery - Mr. Will',
