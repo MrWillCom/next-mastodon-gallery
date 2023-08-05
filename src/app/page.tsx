@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import styles from './page.module.scss'
+import config from '../../config'
 import { Blurhash } from 'react-blurhash'
 import Image from 'next/image'
 
@@ -31,9 +32,7 @@ export default function Home() {
 
   useEffect(() => {
     ;(async () => {
-      const response = await fetch(
-        'https://noc.social/api/v1/accounts/72358/statuses?only_media=true&tagged=photography',
-      )
+      const response = await fetch(config.query)
       setPosts(await response.json())
     })()
   }, [])
@@ -41,8 +40,8 @@ export default function Home() {
   return (
     <div className={notoSerif.className}>
       <header className={styles.header}>
-        <h1 className={styles.title}>Gallery</h1>
-        <p className={styles.subtitle}>by Mr. Will</p>
+        <h1 className={styles.title}>{config.title}</h1>
+        <p className={styles.subtitle}>{config.subtitle}</p>
       </header>
       <main className={styles.main}>
         {posts.flatMap(post =>
@@ -71,14 +70,7 @@ export default function Home() {
           )),
         )}
       </main>
-      <footer className={styles.footer}>
-        <a href="https://creativecommons.org/licenses/by-nc/4.0" target='_blank'>
-          CC BY-NC 4.0
-        </a>{' '}
-        © 2023 Mr. Will. · <a href="https://mrwillcom.com/">Home</a> ·{' '}
-        <a href="https://blog.mrwillcom.com/" target='_blank'>Blog</a> ·{' '}
-        <a href="https://noc.social/@MrWillCom" target='_blank'>Mastodon</a>
-      </footer>
+      <footer className={styles.footer}>{config.footer}</footer>
     </div>
   )
 }
