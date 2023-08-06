@@ -42,13 +42,10 @@ export default function Home() {
     blurhash: string
   }
 
-  const [posts, setPosts]: [Post[], Dispatch<SetStateAction<[]>>] = useState([])
-  const [currentPost, setCurrentPost]: [Post, Dispatch<SetStateAction<{}>>] =
-    useState({})
-  const [currentAttachment, setCurrentAttachment]: [
-    MediaAttachment,
-    Dispatch<SetStateAction<{}>>,
-  ] = useState({})
+  const [posts, setPosts] = useState<Post[]>([])
+  const [currentPost, setCurrentPost] = useState<Post | null>()
+  const [currentAttachment, setCurrentAttachment] =
+    useState<MediaAttachment | null>(null)
 
   useEffect(() => {
     ;(async () => {
@@ -87,10 +84,11 @@ export default function Home() {
                     width="100%"
                     height="auto"
                   />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={attachment.preview_url}
                     className={styles.image}
-                    alt={attachment.description}
+                    alt={attachment.description || ''}
                   />
                 </div>
               </Drawer.Trigger>
@@ -105,11 +103,18 @@ export default function Home() {
           >
             <div className={styles.drawerIndicator} />
             <main className={styles.drawerMain}>
-              <img src={currentAttachment.url} className={styles.drawerImage} />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={currentAttachment?.url}
+                className={styles.drawerImage}
+                alt={currentAttachment?.description || ''}
+              />
               <div className={styles.drawerPostDetails}>
                 <div
                   className={styles.drawerPostContent}
-                  dangerouslySetInnerHTML={{ __html: currentPost.content }}
+                  dangerouslySetInnerHTML={{
+                    __html: currentPost?.content ?? '',
+                  }}
                 />
                 <div className={styles.drawerPostMeta}>
                   <div className={styles.drawerPostMetaItem}>
@@ -117,7 +122,7 @@ export default function Home() {
                       <HeartIcon />
                     </div>
                     <div className={styles.drawerPostMetaItemValue}>
-                      {currentPost.favourites_count}
+                      {currentPost?.favourites_count}
                     </div>
                   </div>
                   <div className={styles.drawerPostMetaItem}>
@@ -125,7 +130,7 @@ export default function Home() {
                       <ArrowUturnLeftIcon />
                     </div>
                     <div className={styles.drawerPostMetaItemValue}>
-                      {currentPost.reblogs_count}
+                      {currentPost?.reblogs_count}
                     </div>
                   </div>
                   <div className={styles.drawerPostMetaItem}>
@@ -133,7 +138,7 @@ export default function Home() {
                       <ChatBubbleLeftIcon />
                     </div>
                     <div className={styles.drawerPostMetaItemValue}>
-                      {currentPost.replies_count}
+                      {currentPost?.replies_count}
                     </div>
                   </div>
                   <div className={styles.drawerPostMetaItem}>
@@ -141,7 +146,9 @@ export default function Home() {
                       <ArrowTopRightOnSquareIcon />
                     </div>
                     <div className={styles.drawerPostMetaItemValue}>
-                      <a href={currentPost.url} target="_blank">View Source</a>
+                      <a href={currentPost?.url} target="_blank">
+                        View Source
+                      </a>
                     </div>
                   </div>
                 </div>
