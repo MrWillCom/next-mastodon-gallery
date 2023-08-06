@@ -1,10 +1,9 @@
 'use client'
 
-import { useState, useEffect, Dispatch, SetStateAction } from 'react'
+import { useState, useEffect } from 'react'
 import styles from './page.module.scss'
 import config from '../../config'
 import { Blurhash } from 'react-blurhash'
-import Image from 'next/image'
 import { Drawer } from 'vaul'
 import {
   HeartIcon,
@@ -44,9 +43,6 @@ export default function Home() {
   }
 
   const [posts, setPosts] = useState<Post[]>([])
-  const [currentPost, setCurrentPost] = useState<Post | null>()
-  const [currentAttachment, setCurrentAttachment] =
-    useState<MediaAttachment | null>(null)
   const [supportsNativeShare, setSupportsNativeShare] = useState(false)
 
   useEffect(() => {
@@ -61,23 +57,17 @@ export default function Home() {
   }, [])
 
   return (
-    <Drawer.Root>
-      <div className={notoSerif.className}>
-        <header className={styles.header}>
-          <h1 className={styles.title}>{config.title}</h1>
-          <p className={styles.subtitle}>{config.subtitle}</p>
-        </header>
-        <main className={styles.main}>
-          {posts.flatMap(post =>
-            post.media_attachments.map(attachment => (
-              <Drawer.Trigger key={attachment.id} asChild>
-                <div
-                  className={styles.attachment}
-                  onClick={() => {
-                    setCurrentPost(post)
-                    setCurrentAttachment(attachment)
-                  }}
-                >
+    <div className={notoSerif.className}>
+      <header className={styles.header}>
+        <h1 className={styles.title}>{config.title}</h1>
+        <p className={styles.subtitle}>{config.subtitle}</p>
+      </header>
+      <main className={styles.main}>
+        {posts.flatMap(post =>
+          post.media_attachments.map(attachment => (
+            <Drawer.Root key={attachment.id}>
+              <Drawer.Trigger asChild>
+                <button className={styles.attachment}>
                   <Blurhash
                     hash={attachment.blurhash}
                     className={styles.blurhashBehind}
@@ -96,92 +86,94 @@ export default function Home() {
                     className={styles.image}
                     alt={attachment.description || ''}
                   />
-                </div>
+                </button>
               </Drawer.Trigger>
-            )),
-          )}
-        </main>
-        <footer className={styles.footer}>{config.footer}</footer>
-        <Drawer.Portal>
-          <Drawer.Overlay className={styles.drawerOverlay} />
-          <Drawer.Content
-            className={styles.drawerContent + ' ' + notoSerif.className}
-          >
-            <div className={styles.drawerIndicator} />
-            <main className={styles.drawerMain}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={currentAttachment?.url}
-                className={styles.drawerImage}
-                alt={currentAttachment?.description || ''}
-              />
-              <div className={styles.drawerPostDetails}>
-                <div
-                  className={styles.drawerPostContent}
-                  dangerouslySetInnerHTML={{
-                    __html: currentPost?.content ?? '',
-                  }}
-                />
-                <div className={styles.drawerPostMeta}>
-                  <div className={styles.drawerPostMetaItem}>
-                    <div className={styles.drawerPostMetaItemIcon}>
-                      <HeartIcon />
-                    </div>
-                    <div className={styles.drawerPostMetaItemValue}>
-                      {currentPost?.favourites_count}
-                    </div>
-                  </div>
-                  <div className={styles.drawerPostMetaItem}>
-                    <div className={styles.drawerPostMetaItemIcon}>
-                      <ArrowUturnLeftIcon />
-                    </div>
-                    <div className={styles.drawerPostMetaItemValue}>
-                      {currentPost?.reblogs_count}
-                    </div>
-                  </div>
-                  <div className={styles.drawerPostMetaItem}>
-                    <div className={styles.drawerPostMetaItemIcon}>
-                      <ChatBubbleLeftIcon />
-                    </div>
-                    <div className={styles.drawerPostMetaItemValue}>
-                      {currentPost?.replies_count}
-                    </div>
-                  </div>
-                  <a
-                    href={currentPost?.url}
-                    target="_blank"
-                    className={styles.drawerPostMetaItem}
-                  >
-                    <div className={styles.drawerPostMetaItemIcon}>
-                      <ArrowTopRightOnSquareIcon />
-                    </div>
-                    <div className={styles.drawerPostMetaItemValue}>Source</div>
-                  </a>
-                  {supportsNativeShare ? (
-                    <button
-                      className={
-                        styles.drawerPostMetaItem + ' ' + notoSerif.className
-                      }
-                      onClick={() => {
-                        navigator
-                          .share({ url: currentPost?.url })
-                          .catch(() => {})
-                      }}
-                    >
-                      <div className={styles.drawerPostMetaItemIcon}>
-                        <ArrowUpOnSquareIcon />
+              <Drawer.Portal>
+                <Drawer.Overlay className={styles.drawerOverlay} />
+                <Drawer.Content
+                  className={styles.drawerContent + ' ' + notoSerif.className}
+                >
+                  <div className={styles.drawerIndicator} />
+                  <main className={styles.drawerMain}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={attachment.url}
+                      className={styles.drawerImage}
+                      alt={attachment.description || ''}
+                    />
+                    <div className={styles.drawerPostDetails}>
+                      <div
+                        className={styles.drawerPostContent}
+                        dangerouslySetInnerHTML={{
+                          __html: post.content ?? '',
+                        }}
+                      />
+                      <div className={styles.drawerPostMeta}>
+                        <div className={styles.drawerPostMetaItem}>
+                          <div className={styles.drawerPostMetaItemIcon}>
+                            <HeartIcon />
+                          </div>
+                          <div className={styles.drawerPostMetaItemValue}>
+                            {post.favourites_count}
+                          </div>
+                        </div>
+                        <div className={styles.drawerPostMetaItem}>
+                          <div className={styles.drawerPostMetaItemIcon}>
+                            <ArrowUturnLeftIcon />
+                          </div>
+                          <div className={styles.drawerPostMetaItemValue}>
+                            {post.reblogs_count}
+                          </div>
+                        </div>
+                        <div className={styles.drawerPostMetaItem}>
+                          <div className={styles.drawerPostMetaItemIcon}>
+                            <ChatBubbleLeftIcon />
+                          </div>
+                          <div className={styles.drawerPostMetaItemValue}>
+                            {post.replies_count}
+                          </div>
+                        </div>
+                        <a
+                          href={post.url}
+                          target="_blank"
+                          className={styles.drawerPostMetaItem}
+                        >
+                          <div className={styles.drawerPostMetaItemIcon}>
+                            <ArrowTopRightOnSquareIcon />
+                          </div>
+                          <div className={styles.drawerPostMetaItemValue}>
+                            Source
+                          </div>
+                        </a>
+                        {supportsNativeShare ? (
+                          <button
+                            className={
+                              styles.drawerPostMetaItem +
+                              ' ' +
+                              notoSerif.className
+                            }
+                            onClick={() => {
+                              navigator.share({ url: post.url }).catch(() => {})
+                            }}
+                          >
+                            <div className={styles.drawerPostMetaItemIcon}>
+                              <ArrowUpOnSquareIcon />
+                            </div>
+                            <div className={styles.drawerPostMetaItemValue}>
+                              Share
+                            </div>
+                          </button>
+                        ) : null}
                       </div>
-                      <div className={styles.drawerPostMetaItemValue}>
-                        Share
-                      </div>
-                    </button>
-                  ) : null}
-                </div>
-              </div>
-            </main>
-          </Drawer.Content>
-        </Drawer.Portal>
-      </div>
-    </Drawer.Root>
+                    </div>
+                  </main>
+                </Drawer.Content>
+              </Drawer.Portal>
+            </Drawer.Root>
+          )),
+        )}
+      </main>
+      <footer className={styles.footer}>{config.footer}</footer>
+    </div>
   )
 }
