@@ -47,12 +47,17 @@ export default function Home() {
   const [currentPost, setCurrentPost] = useState<Post | null>()
   const [currentAttachment, setCurrentAttachment] =
     useState<MediaAttachment | null>(null)
+  const [supportsNativeShare, setSupportsNativeShare] = useState(false)
 
   useEffect(() => {
     ;(async () => {
       const response = await fetch(config.query)
       setPosts(await response.json())
     })()
+  }, [])
+
+  useEffect(() => {
+    setSupportsNativeShare(typeof navigator?.share === 'function')
   }, [])
 
   return (
@@ -152,7 +157,7 @@ export default function Home() {
                     </div>
                     <div className={styles.drawerPostMetaItemValue}>Source</div>
                   </a>
-                  {typeof navigator.share === 'function' ? (
+                  {supportsNativeShare ? (
                     <button
                       className={
                         styles.drawerPostMetaItem + ' ' + notoSerif.className
