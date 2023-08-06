@@ -11,6 +11,7 @@ import {
   ArrowUturnLeftIcon,
   ChatBubbleLeftIcon,
   ArrowTopRightOnSquareIcon,
+  ArrowUpOnSquareIcon,
 } from '@heroicons/react/24/outline'
 
 import { Noto_Serif } from 'next/font/google'
@@ -141,16 +142,35 @@ export default function Home() {
                       {currentPost?.replies_count}
                     </div>
                   </div>
-                  <div className={styles.drawerPostMetaItem}>
+                  <a
+                    href={currentPost?.url}
+                    target="_blank"
+                    className={styles.drawerPostMetaItem}
+                  >
                     <div className={styles.drawerPostMetaItemIcon}>
                       <ArrowTopRightOnSquareIcon />
                     </div>
-                    <div className={styles.drawerPostMetaItemValue}>
-                      <a href={currentPost?.url} target="_blank">
-                        View Source
-                      </a>
-                    </div>
-                  </div>
+                    <div className={styles.drawerPostMetaItemValue}>Source</div>
+                  </a>
+                  {typeof navigator.share === 'function' ? (
+                    <button
+                      className={
+                        styles.drawerPostMetaItem + ' ' + notoSerif.className
+                      }
+                      onClick={() => {
+                        navigator
+                          .share({ url: currentPost?.url })
+                          .catch(() => {})
+                      }}
+                    >
+                      <div className={styles.drawerPostMetaItemIcon}>
+                        <ArrowUpOnSquareIcon />
+                      </div>
+                      <div className={styles.drawerPostMetaItemValue}>
+                        Share
+                      </div>
+                    </button>
+                  ) : null}
                 </div>
               </div>
             </main>

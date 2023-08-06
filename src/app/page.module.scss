@@ -117,7 +117,8 @@
 
 .drawerPostMeta {
   display: flex;
-  opacity: 0.8;
+  border-top: 1px solid #8882;
+  background-color: #8882;
 }
 
 .drawerPostMetaItem {
@@ -127,6 +128,20 @@
   display: flex;
   gap: 6px;
   min-width: max-content;
+  color: var(--link-color);
+
+  text-decoration: none;
+  border: none;
+  background: none;
+}
+
+button.drawerPostMetaItem {
+  transition: color 0.15s;
+
+  &:hover,
+  &:focus-visible {
+    color: var(--link-color-hover);
+  }
 }
 
 .drawerPostMetaItemIcon {

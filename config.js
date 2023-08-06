@@ -1,4 +1,8 @@
 const config = {
+  metadata: {
+    title: 'Gallery - Mr. Will',
+    description: 'Gallery of my photographs posted on Mastodon.',
+  },
   query:
     'https://noc.social/api/v1/accounts/72358/statuses?only_media=true&tagged=photography',
   title: 'Gallery',

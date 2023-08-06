@@ -1,10 +1,8 @@
 import 'modern-normalize/modern-normalize.css'
 import './globals.scss'
+import config from '../../config'
 
-export const metadata = {
-  title: 'Gallery - Mr. Will',
-  description: 'Gallery of my photographs posted on Mastodon.',
-}
+export const metadata = config.metadata
 
 export default function RootLayout({
   children,
