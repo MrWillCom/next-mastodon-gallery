@@ -3,12 +3,12 @@
 
   --link-color: #555;
   --link-color-hover: #000;
-}
+  --drawer-background: #fff;
 
-@media (prefers-color-scheme: dark) {
-  :root {
+  @media (prefers-color-scheme: dark) {
     --link-color: #bbb;
     --link-color-hover: #fff;
+    --drawer-background: #111;
   }
 }
 
