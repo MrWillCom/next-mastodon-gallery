@@ -1,6 +1,6 @@
 # Next Mastodon Gallery
 
-A [Next.js](https://nextjs.org/) powered gallery for [Mastodon](https://joinmastodon.org/).
+A [Next.js](https://nextjs.org/)-powered gallery for [Mastodon](https://joinmastodon.org/).
 
 ![Preview screenshot](./screenshots/preview.png)
 
