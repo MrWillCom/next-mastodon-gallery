@@ -2,7 +2,9 @@
 
 A [Next.js](https://nextjs.org/)-powered gallery for [Mastodon](https://joinmastodon.org/).
 
-<p align="center"><a href="https://gallery.mrwillcom.com/"><strong>Preview</strong></a> / <a href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FMrWillCom%2Fnext-mastodon-gallery">One-Click Deploy</a></p>
+[one-click-deploy-url]: https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FMrWillCom%2Fnext-mastodon-gallery&demo-title=Next%20Mastodon%20Gallery&demo-description=A%20Next.js%20powered%20gallery%20for%20Mastodon.&demo-url=https%3A%2F%2Fgallery.mrwillcom.com%2F&demo-image=https%3A%2F%2Fgithub.com%2FMrWillCom%2Fnext-mastodon-gallery%2Fraw%2Fmain%2Fscreenshots%2Fpreview.png
+
+[**Preview**](https://gallery.mrwillcom.com/) / [One-Click Deploy][one-click-deploy-url]
 
 ![Preview screenshot](./screenshots/preview.png)
 
@@ -13,7 +15,7 @@ A [Next.js](https://nextjs.org/)-powered gallery for [Mastodon](https://joinmast
 
 ## Getting Started
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FMrWillCom%2Fnext-mastodon-gallery)
+[![Deploy with Vercel](https://vercel.com/button)][one-click-deploy-url]
 
 After deployment, you may need to make changes to [configuration](#configuration).
 
