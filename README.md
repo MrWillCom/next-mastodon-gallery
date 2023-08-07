@@ -2,6 +2,8 @@
 
 A [Next.js](https://nextjs.org/)-powered gallery for [Mastodon](https://joinmastodon.org/).
 
+<p align="center"><a href="https://gallery.mrwillcom.com/"><strong>Preview</strong></a> / <a href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FMrWillCom%2Fnext-mastodon-gallery">One-Click Deploy</a></p>
+
 ![Preview screenshot](./screenshots/preview.png)
 
 <details>
