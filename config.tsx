@@ -26,6 +26,13 @@ const config: {
         Blog
       </a>{' '}
       ·{' '}
+      <a
+        href="https://github.com/MrWillCom/next-mastodon-gallery"
+        target="_blank"
+      >
+        GitHub
+      </a>{' '}
+      ·{' '}
       <a href="https://noc.social/@MrWillCom" target="_blank">
         Mastodon
       </a>
