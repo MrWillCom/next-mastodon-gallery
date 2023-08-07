@@ -1,38 +1,50 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next Mastodon Gallery
+
+A [Next.js](https://nextjs.org/) powered gallery for [Mastodon](https://joinmastodon.org/).
+
+![Preview screenshot](./screenshots/preview.png)
+
+<details>
+  <summary>Preview screenshot of details drawer</summary>
+  <img src="./screenshots/preview-drawer.png" alt="Preview screenshot of details drawer">
+</details>
 
 ## Getting Started
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FMrWillCom%2Fnext-mastodon-gallery)
+
+After deployment, you may need to make changes to [configuration](#configuration).
+
+## Configuration
+
+A ready configuration is in `config.tsx`, options are all commented and typed.
+
+### About Mastodon API query URL
+
+First, you need to get your account ID, according to [Lookup account ID from Webfinger address - Mastodon documentation](https://docs.joinmastodon.org/methods/accounts/#lookup), you can make a request to your instance:
+
+```sh
+> curl 'https://<your-instance>/api/v1/accounts/lookup?acct=<your-username>'
+{"id":"72358"...}%
+       ^^^^^
+       account ID
+```
+
+Then, you can refer to [Get account’s statuses - Mastodon documentation](https://docs.joinmastodon.org/methods/accounts/#statuses), here is an example:
+
+```sh
+> # get all statuses tagged with `#photography`, excepted the ones without media attachments.
+> curl 'http://<your-instance>/api/v1/accounts/<your-account-id>/statuses?only_media=true&tagged=photography'
+```
+
+Once you get a satisfied URL, put it into `query` in `config.tsx`.
+
+## Development
+
 First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
+```sh
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Then, open [http://localhost:3000](http://localhost:3000).
