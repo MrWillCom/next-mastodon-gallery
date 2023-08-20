@@ -1,0 +1,35 @@
+.spinner {
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  opacity: 0;
+  animation: spin 1s linear infinite, fade-in 0.5s ease-out 1s forwards;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fade-in {
+  to {
+    opacity: 1;
+  }
+}
+
+// Visually Hidden by Bootstrap, MIT licensed
+// https://getbootstrap.com/docs/5.3/helpers/visually-hidden/
+.visuallyHidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
