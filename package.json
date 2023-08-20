@@ -10,22 +10,22 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.0.18",
-    "@types/node": "20.4.10",
+    "@types/node": "20.5.1",
     "@types/react": "18.2.20",
     "@types/react-dom": "18.2.7",
     "blurhash": "^2.0.5",
     "eslint": "8.47.0",
-    "eslint-config-next": "13.4.13",
+    "eslint-config-next": "13.4.19",
     "modern-normalize": "^2.0.0",
-    "next": "13.4.13",
+    "next": "13.4.19",
     "react": "18.2.0",
     "react-blurhash": "^0.3.0",
     "react-dom": "18.2.0",
     "swr": "^2.2.1",
     "typescript": "5.1.6",
-    "vaul": "^0.2.3"
+    "vaul": "^0.3.7"
   },
   "devDependencies": {
-    "sass": "^1.65.1"
+    "sass": "^1.66.1"
   }
 }
