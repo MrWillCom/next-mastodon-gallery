@@ -33,7 +33,7 @@ const config: {
         GitHub
       </a>{' '}
       ·{' '}
-      <a href="https://noc.social/@MrWillCom" target="_blank">
+      <a rel="me" href="https://noc.social/@MrWillCom" target="_blank">
         Mastodon
       </a>
     </>
