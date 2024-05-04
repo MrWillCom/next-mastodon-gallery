@@ -3,9 +3,6 @@ const nextConfig = {
   images: {
     remotePatterns: [],
   },
-  experimental: {
-    appDir: true,
-  },
 }
 
 module.exports = nextConfig
