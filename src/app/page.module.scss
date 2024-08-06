@@ -23,7 +23,7 @@
   opacity: 0.6;
 }
 
-.main {
+.grid {
   max-width: 1000px;
   margin: auto;
   display: grid;
@@ -172,4 +172,35 @@ button.drawerPostMetaItem {
 
 .drawerPostMetaItemValue {
   font-size: 14px;
+}
+
+.loadMore {
+  display: block;
+  margin: 64px auto;
+  background-color: var(--load-more-background);
+  border-radius: 9999px;
+  padding: 8px 16px;
+  border: none;
+  font-size: 14px;
+  text-decoration: none;
+  transition-property: background-color, color, transform;
+  transition-duration: 0.15s;
+
+  &:hover,
+  &:focus-visible {
+    transform: scale(1.02);
+    background-color: var(--load-more-background-hover);
+  }
+
+  &:active {
+    transform: scale(0.97);
+    background-color: var(--load-more-background-active);
+  }
+}
+
+.theEnd {
+  display: block;
+  margin: 64px auto;
+  font-size: 14px;
+  text-align: center;
 }

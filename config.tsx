@@ -4,6 +4,7 @@ const config: {
     description: string
   }
   query: string
+  limit: number
   title: string | JSX.Element
   subtitle: string | JSX.Element
   footer: string | JSX.Element
@@ -14,6 +15,7 @@ const config: {
   },
   query:
     'https://noc.social/api/v1/accounts/72358/statuses?only_media=true&tagged=photography', // check README.md#about-mastodon-api-query-url
+  limit: 20,
   title: 'Gallery',
   subtitle: 'by Mr. Will',
   footer: (
