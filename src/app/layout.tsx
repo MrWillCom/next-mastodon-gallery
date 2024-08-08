@@ -1,6 +1,7 @@
 import 'modern-normalize/modern-normalize.css'
 import './globals.scss'
-import config from '../../config'
+import config from '@/../config'
+import { ViewTransitions } from 'next-view-transitions'
 
 import { Noto_Serif } from 'next/font/google'
 const notoSerif = Noto_Serif({
@@ -17,8 +18,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={notoSerif.className}>{children}</body>
-    </html>
+    <ViewTransitions>
+      <html lang="en">
+        <body className={notoSerif.className}>{children}</body>
+      </html>
+    </ViewTransitions>
   )
 }

@@ -6,6 +6,7 @@
   font-size: 48px;
   margin: 0;
   margin-top: calc(20vh + 25px);
+  view-transition-name: title;
 }
 
 .subtitle {
@@ -82,97 +83,6 @@
   text-align: center;
   margin: 80px 0;
   opacity: 0.6;
-}
-
-.drawerOverlay {
-  position: fixed;
-  inset: 0px;
-  background-color: rgb(0 0 0 / 0.4);
-  backdrop-filter: saturate(0.2) blur(24px);
-}
-
-.drawerContent {
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: var(--drawer-background);
-  margin-left: auto;
-  margin-right: auto;
-  max-width: min(100vw, 800px);
-  width: max-content;
-}
-
-.drawerIndicator {
-  background-color: #8882;
-  border-radius: 9999px;
-  position: absolute;
-  top: 8px;
-  left: calc(50% - 24px);
-  width: 48px;
-  height: 6px;
-}
-
-.drawerMain {
-  display: flex;
-  flex-direction: column;
-}
-
-.drawerImage {
-  margin-top: 22px;
-  max-height: calc(100vh - 180px);
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.drawerStatusDetails {
-  max-height: 100px;
-  overflow-y: auto;
-}
-
-.drawerStatusContent {
-  padding: 0 16px;
-}
-
-.drawerStatusMeta {
-  display: flex;
-  border-top: 1px solid #8882;
-  background-color: #8882;
-}
-
-.drawerStatusMetaItem {
-  width: 100%;
-  height: 40px;
-  padding: 12px 16px;
-  display: flex;
-  gap: 6px;
-  min-width: max-content;
-  color: var(--link-color);
-
-  text-decoration: none;
-  border: none;
-  background: none;
-}
-
-button.drawerStatusMetaItem {
-  transition: color 0.15s;
-
-  &:hover,
-  &:focus-visible {
-    color: var(--link-color-hover);
-  }
-}
-
-.drawerStatusMetaItemIcon {
-  height: 100%;
-  aspect-ratio: 1;
-}
-
-.drawerStatusMetaItemValue {
-  font-size: 14px;
 }
 
 .loadMore {
