@@ -16,28 +16,9 @@ import useSWRInfinite from 'swr/infinite'
 
 import Spinner from '@/components/Spinner'
 import fetcher from '@/utils/fetcher'
+import { Status } from '@/types/mastodon'
 
 export default function Home() {
-  type Status = {
-    id: string
-    created_at: string
-    url: string
-    replies_count: number
-    reblogs_count: number
-    favourites_count: number
-    content: string
-    media_attachments: MediaAttachment[]
-  }
-
-  type MediaAttachment = {
-    id: string
-    type: 'unknown' | 'image' | 'gifv' | 'video' | 'audio'
-    url: string
-    preview_url: string
-    description: string | null
-    blurhash: string
-  }
-
   const { data, error, isLoading, size, setSize } = useSWRInfinite<Status[]>(
     (pageIndex, previousPageData) => {
       const query = new URL(config.query)

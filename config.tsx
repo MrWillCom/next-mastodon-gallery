@@ -5,6 +5,7 @@ const config: {
   }
   query: string
   limit: number
+  getStatusQuery: (id: string) => string
   title: string | JSX.Element
   subtitle: string | JSX.Element
   footer: string | JSX.Element
@@ -16,6 +17,7 @@ const config: {
   query:
     'https://noc.social/api/v1/accounts/72358/statuses?only_media=true&tagged=photography', // check README.md#about-mastodon-api-query-url
   limit: 20,
+  getStatusQuery: id => 'https://noc.social/api/v1/statuses/' + id,
   title: 'Gallery',
   subtitle: 'by Mr. Will',
   footer: (
