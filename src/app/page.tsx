@@ -15,6 +15,7 @@ import {
 import useSWRInfinite from 'swr/infinite'
 
 import Spinner from '@/components/Spinner'
+import fetcher from '@/utils/fetcher'
 
 export default function Home() {
   type Post = {
@@ -56,10 +57,7 @@ export default function Home() {
       )
       return query.href
     },
-    (...args) => {
-      // @ts-ignore
-      return fetch(...args).then(res => res.json())
-    },
+    fetcher,
   )
 
   const posts = data ? ([] as Post[]).concat(...data) : []
