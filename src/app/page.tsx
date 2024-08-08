@@ -14,14 +14,7 @@ import {
 } from '@heroicons/react/24/outline'
 import useSWRInfinite from 'swr/infinite'
 
-import { Noto_Serif } from 'next/font/google'
 import Spinner from '@/components/Spinner'
-
-const notoSerif = Noto_Serif({
-  subsets: ['latin'],
-  weight: '400',
-  style: 'italic',
-})
 
 export default function Home() {
   type Post = {
@@ -82,7 +75,7 @@ export default function Home() {
   }, [])
 
   return (
-    <div className={notoSerif.className}>
+    <div>
       <header className={styles.header}>
         <h1 className={styles.title}>{config.title}</h1>
         <p className={styles.subtitle}>{config.subtitle}</p>
@@ -135,11 +128,7 @@ export default function Home() {
                       </Drawer.Trigger>
                       <Drawer.Portal>
                         <Drawer.Overlay className={styles.drawerOverlay} />
-                        <Drawer.Content
-                          className={
-                            styles.drawerContent + ' ' + notoSerif.className
-                          }
-                        >
+                        <Drawer.Content className={styles.drawerContent}>
                           <div className={styles.drawerIndicator} />
                           <main className={styles.drawerMain}>
                             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -210,11 +199,7 @@ export default function Home() {
                                 </a>
                                 {supportsNativeShare ? (
                                   <button
-                                    className={
-                                      styles.drawerPostMetaItem +
-                                      ' ' +
-                                      notoSerif.className
-                                    }
+                                    className={styles.drawerPostMetaItem}
                                     onClick={() => {
                                       navigator
                                         .share({ url: post.url })
@@ -249,7 +234,7 @@ export default function Home() {
               onClick={() => {
                 setSize(size + 1)
               }}
-              className={[styles.loadMore, notoSerif.className].join(' ')}
+              className={styles.loadMore}
             >
               Load More
             </button>

@@ -2,6 +2,13 @@ import 'modern-normalize/modern-normalize.css'
 import './globals.scss'
 import config from '../../config'
 
+import { Noto_Serif } from 'next/font/google'
+const notoSerif = Noto_Serif({
+  subsets: ['latin'],
+  weight: '400',
+  style: 'italic',
+})
+
 export const metadata = config.metadata
 
 export default function RootLayout({
@@ -11,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className={notoSerif.className}>{children}</body>
     </html>
   )
 }
