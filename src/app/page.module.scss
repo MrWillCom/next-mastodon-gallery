@@ -128,22 +128,22 @@
   margin-right: auto;
 }
 
-.drawerPostDetails {
+.drawerStatusDetails {
   max-height: 100px;
   overflow-y: auto;
 }
 
-.drawerPostContent {
+.drawerStatusContent {
   padding: 0 16px;
 }
 
-.drawerPostMeta {
+.drawerStatusMeta {
   display: flex;
   border-top: 1px solid #8882;
   background-color: #8882;
 }
 
-.drawerPostMetaItem {
+.drawerStatusMetaItem {
   width: 100%;
   height: 40px;
   padding: 12px 16px;
@@ -157,7 +157,7 @@
   background: none;
 }
 
-button.drawerPostMetaItem {
+button.drawerStatusMetaItem {
   transition: color 0.15s;
 
   &:hover,
@@ -166,12 +166,12 @@ button.drawerPostMetaItem {
   }
 }
 
-.drawerPostMetaItemIcon {
+.drawerStatusMetaItemIcon {
   height: 100%;
   aspect-ratio: 1;
 }
 
-.drawerPostMetaItemValue {
+.drawerStatusMetaItemValue {
   font-size: 14px;
 }
 

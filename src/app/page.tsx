@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import styles from './page.module.scss'
-import config from '../../config'
+import config from '@/../config'
 import { Blurhash } from 'react-blurhash'
 import { Drawer } from 'vaul'
 import {
@@ -18,7 +18,7 @@ import Spinner from '@/components/Spinner'
 import fetcher from '@/utils/fetcher'
 
 export default function Home() {
-  type Post = {
+  type Status = {
     id: string
     created_at: string
     url: string
@@ -38,7 +38,7 @@ export default function Home() {
     blurhash: string
   }
 
-  const { data, error, isLoading, size, setSize } = useSWRInfinite<Post[]>(
+  const { data, error, isLoading, size, setSize } = useSWRInfinite<Status[]>(
     (pageIndex, previousPageData) => {
       const query = new URL(config.query)
       query.searchParams.set('limit', config.limit.toString())
@@ -60,7 +60,7 @@ export default function Home() {
     fetcher,
   )
 
-  const posts = data ? ([] as Post[]).concat(...data) : []
+  const statuses = data ? ([] as Status[]).concat(...data) : []
   const canLoadMore = !(
     data?.[0]?.length === 0 ||
     (data && data[data?.length - 1].length < config.limit)
@@ -89,11 +89,11 @@ export default function Home() {
           <div className={styles.grid}>
             {(() => {
               let i = -1
-              return posts.flatMap((post, postIndex) => {
-                if (postIndex % config.limit === 0) {
+              return statuses.flatMap((status, statusIndex) => {
+                if (statusIndex % config.limit === 0) {
                   i = -1
                 }
-                return post.media_attachments.map(attachment => {
+                return status.media_attachments.map(attachment => {
                   i++
                   return (
                     <Drawer.Root key={attachment.id}>
@@ -135,82 +135,86 @@ export default function Home() {
                               className={styles.drawerImage}
                               alt={attachment.description || ''}
                             />
-                            <div className={styles.drawerPostDetails}>
+                            <div className={styles.drawerStatusDetails}>
                               <div
-                                className={styles.drawerPostContent}
+                                className={styles.drawerStatusContent}
                                 dangerouslySetInnerHTML={{
-                                  __html: post.content ?? '',
+                                  __html: status.content ?? '',
                                 }}
                               />
-                              <div className={styles.drawerPostMeta}>
-                                <div className={styles.drawerPostMetaItem}>
+                              <div className={styles.drawerStatusMeta}>
+                                <div className={styles.drawerStatusMetaItem}>
                                   <div
-                                    className={styles.drawerPostMetaItemIcon}
+                                    className={styles.drawerStatusMetaItemIcon}
                                   >
                                     <HeartIcon />
                                   </div>
                                   <div
-                                    className={styles.drawerPostMetaItemValue}
+                                    className={styles.drawerStatusMetaItemValue}
                                   >
-                                    {post.favourites_count}
+                                    {status.favourites_count}
                                   </div>
                                 </div>
-                                <div className={styles.drawerPostMetaItem}>
+                                <div className={styles.drawerStatusMetaItem}>
                                   <div
-                                    className={styles.drawerPostMetaItemIcon}
+                                    className={styles.drawerStatusMetaItemIcon}
                                   >
                                     <ArrowUturnLeftIcon />
                                   </div>
                                   <div
-                                    className={styles.drawerPostMetaItemValue}
+                                    className={styles.drawerStatusMetaItemValue}
                                   >
-                                    {post.reblogs_count}
+                                    {status.reblogs_count}
                                   </div>
                                 </div>
-                                <div className={styles.drawerPostMetaItem}>
+                                <div className={styles.drawerStatusMetaItem}>
                                   <div
-                                    className={styles.drawerPostMetaItemIcon}
+                                    className={styles.drawerStatusMetaItemIcon}
                                   >
                                     <ChatBubbleLeftIcon />
                                   </div>
                                   <div
-                                    className={styles.drawerPostMetaItemValue}
+                                    className={styles.drawerStatusMetaItemValue}
                                   >
-                                    {post.replies_count}
+                                    {status.replies_count}
                                   </div>
                                 </div>
                                 <a
-                                  href={post.url}
+                                  href={status.url}
                                   target="_blank"
-                                  className={styles.drawerPostMetaItem}
+                                  className={styles.drawerStatusMetaItem}
                                 >
                                   <div
-                                    className={styles.drawerPostMetaItemIcon}
+                                    className={styles.drawerStatusMetaItemIcon}
                                   >
                                     <ArrowTopRightOnSquareIcon />
                                   </div>
                                   <div
-                                    className={styles.drawerPostMetaItemValue}
+                                    className={styles.drawerStatusMetaItemValue}
                                   >
                                     Source
                                   </div>
                                 </a>
                                 {supportsNativeShare ? (
                                   <button
-                                    className={styles.drawerPostMetaItem}
+                                    className={styles.drawerStatusMetaItem}
                                     onClick={() => {
                                       navigator
-                                        .share({ url: post.url })
+                                        .share({ url: status.url })
                                         .catch(() => {})
                                     }}
                                   >
                                     <div
-                                      className={styles.drawerPostMetaItemIcon}
+                                      className={
+                                        styles.drawerStatusMetaItemIcon
+                                      }
                                     >
                                       <ArrowUpOnSquareIcon />
                                     </div>
                                     <div
-                                      className={styles.drawerPostMetaItemValue}
+                                      className={
+                                        styles.drawerStatusMetaItemValue
+                                      }
                                     >
                                       Share
                                     </div>
