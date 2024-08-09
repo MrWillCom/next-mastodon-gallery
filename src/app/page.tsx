@@ -7,9 +7,9 @@ import { Blurhash } from 'react-blurhash'
 import useSWRInfinite from 'swr/infinite'
 import { Link } from 'next-view-transitions'
 
-import Spinner from '@/components/Spinner'
 import fetcher from '@/utils/fetcher'
 import { Status } from '@/types/mastodon'
+import RemoteContentView from '@/components/RemoteContentView'
 
 export default function Home() {
   const { data, error, isLoading, size, setSize } = useSWRInfinite<Status[]>(
@@ -52,13 +52,7 @@ export default function Home() {
         <h1 className={styles.title}>{config.title}</h1>
         <p className={styles.subtitle}>{config.subtitle}</p>
       </header>
-      {error ? (
-        <main className={styles.mainPlaceholder}>Failed to fetch from API</main>
-      ) : isLoading ? (
-        <main className={styles.mainPlaceholder}>
-          <Spinner />
-        </main>
-      ) : (
+      <RemoteContentView error={error} isLoading={isLoading}>
         <main>
           <div className={styles.grid}>
             {(() => {
@@ -76,13 +70,21 @@ export default function Home() {
                         { '--delay-coefficient': i } as React.CSSProperties
                       }
                       key={attachment.id}
-                      href={'/status/' + status.id + '/' + attachment.id}
+                      href={
+                        '/status/' + status.id + '?attachment=' + attachment.id
+                      }
                     >
                       <Blurhash
                         hash={attachment.blurhash}
                         className={styles.blurhashBehind}
                         width="100%"
                         height="auto"
+                        style={
+                          {
+                            viewTransitionName:
+                              'behind-attachment-id-' + attachment.id,
+                          } as React.CSSProperties
+                        }
                       />
                       <Blurhash
                         hash={attachment.blurhash}
@@ -121,7 +123,7 @@ export default function Home() {
             <p className={styles.theEnd}>The End.</p>
           )}
         </main>
-      )}
+      </RemoteContentView>
       <footer className={styles.footer}>{config.footer}</footer>
     </div>
   )

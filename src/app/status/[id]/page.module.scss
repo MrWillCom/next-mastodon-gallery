@@ -1,0 +1,96 @@
+.header {
+  height: 60px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size: 24px;
+  line-height: 24px;
+  margin: 0;
+  width: 100%;
+
+  & > a {
+    text-decoration: none;
+  }
+}
+
+.largePreview {
+  display: block;
+  max-width: calc(100svw - 20px);
+  max-height: calc(100svh - 164px);
+  margin: 16px auto;
+  margin-top: 0;
+}
+
+$tf: cubic-bezier(0, 0, 0, 1);
+
+.attachmentRadio {
+  margin: 0;
+  padding: 0;
+  border: none;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin: 10px;
+  flex-wrap: wrap;
+
+  .attachmentRadioItem {
+    display: flex;
+    flex-direction: column;
+    scale: 0.95;
+    transition-property: scale;
+    transition-duration: 0.2s;
+    transition-timing-function: $tf;
+
+    &:active {
+      scale: 0.9;
+    }
+
+    $imgH: 76px;
+
+    .attachmentRadioInput {
+      appearance: none;
+      display: block;
+      margin-bottom: -$imgH;
+      width: 100%;
+      height: $imgH;
+      background-image: var(--image-url);
+      background-size: cover;
+      filter: blur(16px) saturate(1.2);
+      opacity: 0;
+      scale: 0.8;
+      transition-property: opacity, scale;
+      transition-duration: 0.2s;
+      transition-timing-function: $tf;
+
+      &:checked {
+        opacity: 1;
+        scale: 1;
+      }
+    }
+
+    .attachmentRadioLabel {
+      height: $imgH;
+
+      .attachmentRadioImage {
+        height: 100%;
+        border-radius: 6px;
+        filter: saturate(0.8) contrast(0.8);
+        transition-property: filter;
+        transition-duration: 0.2s;
+        transition-timing-function: $tf;
+      }
+    }
+
+    &.selected {
+      scale: 1;
+
+      .attachmentRadioImage {
+        filter: none;
+      }
+    }
+  }
+}
