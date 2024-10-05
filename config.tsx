@@ -7,6 +7,11 @@ const config: {
   limit: number
   title: string | JSX.Element
   subtitle: string | JSX.Element
+  errorMessage: string | JSX.Element
+  source: string | JSX.Element
+  share: string | JSX.Element
+  loadMore: string | JSX.Element
+  theEnd: string | JSX.Element
   footer: string | JSX.Element
 } = {
   metadata: {
@@ -17,7 +22,12 @@ const config: {
     'https://noc.social/api/v1/accounts/72358/statuses?only_media=true&tagged=photography', // check README.md#about-mastodon-api-query-url
   limit: 20,
   title: 'Gallery',
-  subtitle: 'by Mr. Will',
+  subtitle: 'A fine way to showcase sparkles in life.',
+  errorMessage: 'Failed to fetch from API.',
+  source: 'Source',
+  share: 'Share',
+  loadMore: 'Load More',
+  theEnd: 'Q.E.D.',
   footer: (
     <>
       <p>

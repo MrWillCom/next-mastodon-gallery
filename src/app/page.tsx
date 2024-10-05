@@ -79,7 +79,7 @@ export default function Home() {
         <p className={styles.subtitle}>{config.subtitle}</p>
       </header>
       {error ? (
-        <main className={styles.mainPlaceholder}>Failed to fetch from API</main>
+        <main className={styles.mainPlaceholder}>{config.errorMessage}</main>
       ) : isLoading ? (
         <main className={styles.mainPlaceholder}>
           <Spinner />
@@ -192,7 +192,7 @@ export default function Home() {
                                   <div
                                     className={styles.drawerStatusMetaItemValue}
                                   >
-                                    Source
+                                    {config.source}
                                   </div>
                                 </a>
                                 {supportsNativeShare ? (
@@ -216,7 +216,7 @@ export default function Home() {
                                         styles.drawerStatusMetaItemValue
                                       }
                                     >
-                                      Share
+                                      {config.share}
                                     </div>
                                   </button>
                                 ) : null}
@@ -238,10 +238,10 @@ export default function Home() {
               }}
               className={styles.loadMore}
             >
-              Load More
+              {config.loadMore}
             </button>
           ) : (
-            <p className={styles.theEnd}>The End.</p>
+            <p className={styles.theEnd}>{config.theEnd}</p>
           )}
         </main>
       )}
