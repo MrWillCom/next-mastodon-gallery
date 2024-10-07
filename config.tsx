@@ -56,14 +56,25 @@ const config: {
         >
           MIT License
         </a>
-        . Photos are licensed under{' '}
+        .
+      </p>
+      <p>
+        Photos without notes on licenses are licensed under{' '}
         <a
           href="https://creativecommons.org/licenses/by-nc/4.0"
           target="_blank"
         >
           CC BY-NC 4.0
         </a>
-        , unless otherwise noted.
+        , otherwise they follow the stated license. Those available on{' '}
+        <a href="https://unsplash.com/@mrwillcom" target="_blank">
+          Unsplash
+        </a>{' '}
+        are free to use under the{' '}
+        <a href="https://unsplash.com/license" target="_blank">
+          Unsplash License
+        </a>
+        .
       </p>
     </>
   ),
