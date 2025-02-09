@@ -10,25 +10,25 @@
     "format": "prettier . --write"
   },
   "dependencies": {
-    "@heroicons/react": "^2.1.5",
-    "@types/node": "22.5.1",
-    "@types/react": "18.3.5",
-    "@types/react-dom": "18.3.0",
+    "@heroicons/react": "^2.2.0",
+    "@types/node": "22.13.1",
+    "@types/react": "19.0.8",
+    "@types/react-dom": "19.0.3",
     "blurhash": "^2.0.5",
-    "eslint": "9.9.1",
-    "eslint-config-next": "14.2.7",
-    "modern-normalize": "^3.0.0",
-    "next": "14.2.7",
-    "react": "18.3.1",
+    "eslint": "9.20.0",
+    "eslint-config-next": "15.1.6",
+    "modern-normalize": "^3.0.1",
+    "next": "15.1.6",
+    "react": "19.0.0",
     "react-blurhash": "^0.3.0",
-    "react-dom": "18.3.1",
-    "swr": "^2.2.5",
-    "typescript": "5.5.4",
-    "vaul": "^0.9.1"
+    "react-dom": "19.0.0",
+    "swr": "^2.3.2",
+    "typescript": "5.7.3",
+    "vaul": "^1.1.2"
   },
   "devDependencies": {
-    "prettier": "3.3.3",
-    "sass": "^1.77.8"
+    "prettier": "3.4.2",
+    "sass": "^1.84.0"
   },
-  "packageManager": "pnpm@9.9.0+sha512.60c18acd138bff695d339be6ad13f7e936eea6745660d4cc4a776d5247c540d0edee1a563695c183a66eb917ef88f2b4feb1fc25f32a7adcadc7aaf3438e99c1"
+  "packageManager": "pnpm@10.2.1+sha512.398035c7bd696d0ba0b10a688ed558285329d27ea994804a52bad9167d8e3a72bcb993f9699585d3ca25779ac64949ef422757a6c31102c12ab932e5cbe5cc92"
 }
